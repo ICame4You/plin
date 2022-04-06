@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      <Route path="/plin" element={<Home />}>
+      <Route path={process.env.PUBLIC_URL + '/'} element={<Home />}>
         <Route path="activities" element={<Activities />} />
       </Route>
     </Routes>
