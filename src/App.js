@@ -1,18 +1,32 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import Home from './routes/home/home.component';
 import Activities from './routes/activities/activities.component';
+import Navigation from './routes/navigation/navigation.component';
 
 import './App.css';
 
-function App() {
+function NoMatch() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="activities" element={<Activities />} />
-      </Route>
-    </Routes>
+    <div>
+      <h2>Упс! Кажется такой страницы не существует.</h2>
+      <p>
+        <Link to="/">Перейдите на главную страницу</Link>
+      </p>
+    </div>
   );
 }
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="activities" element={<Activities />} />
+      </Route>
+      <Route path="*" element={<NoMatch />} />
+    </Routes>
+  );
+};
 
 export default App;
