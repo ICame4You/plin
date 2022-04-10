@@ -20,8 +20,8 @@ const Activities = () => {
   return (
     <div>
       <div>
-        <p>Чем ты планируешь заниматься в течении дня?</p>
-        <button onClick={openActivityForm}>Добавь занятие</button>
+        <p>Здесь вам необходимо добавить свои события</p>
+        <button onClick={openActivityForm}>Добавить событие</button>
       </div>
       {isActivityFormEnabled && (
         <div>
