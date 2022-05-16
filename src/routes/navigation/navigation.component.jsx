@@ -1,14 +1,6 @@
-import { useState } from 'react';
-
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, NavLink } from 'react-router-dom';
 
 const Navigation = () => {
-  const [activeMenuItem, setActiveMenuItem] = useState(0);
-
-  const selectMenuItem = (menuNumber) => {
-    setActiveMenuItem(menuNumber);
-  };
-
   return (
     <div className="app">
       <h1>
@@ -17,18 +9,18 @@ const Navigation = () => {
         </Link>
       </h1>
       <div className="menu">
-        <span
-          className={'menu-item ' + (activeMenuItem === 1 ? '-active' : '')}
-          onClick={() => selectMenuItem(1)}
+        <NavLink
+          to="/activities"
+          className={({isActive}) => `menu-item ${isActive ? '-active' : ''}`}
         >
-          <Link to="/activities">Активности</Link>
-        </span>
-        <span
-          className={'menu-item ' + (activeMenuItem === 2 ? '-active' : '')}
-          onClick={() => selectMenuItem(2)}
+          Активности
+        </NavLink>
+        <NavLink
+          to="/calendar"
+          className={({isActive}) => `menu-item ${isActive ? '-active' : ''}`}
         >
-          <Link to="/calendar">Календарь</Link>
-        </span>
+          Календарь
+        </NavLink>
       </div>
       <Outlet />
     </div>

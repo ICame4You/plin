@@ -1,15 +1,20 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import './index.scss';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createRoot } from 'react-dom/client';
+import { MainProvider } from './contexts/main.context';
+
+import './index.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <App />
+    <MainProvider>
+      <App />
+    </MainProvider>
   </BrowserRouter>
 );
 

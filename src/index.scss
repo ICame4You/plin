@@ -23,15 +23,10 @@ code {
 
 .menu-item {
   margin-right: 8px;
-
-  a {
-    color: black;
-  }
+  color: black;
 
   &.-active {
-    a {
-      text-decoration: none;
-      color: darkorange;
-    }
+    text-decoration: none;
+    color: darkorange;
   }
 }

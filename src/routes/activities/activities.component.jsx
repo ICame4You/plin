@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { MainContext } from '../../contexts/main.context';
 
 const Activities = () => {
   const [isActivityFormEnabled, setIsActivityFormEnabled] = useState(false);
   const [activityInput, setActivityInput] = useState('');
   const [activities, setActivities] = useState([]);
+
+  const {setMainInfo} = useContext(MainContext)
+  const {mainInfo} = useContext(MainContext)
 
   const openActivityForm = () => {
     setIsActivityFormEnabled(!isActivityFormEnabled);
@@ -11,6 +15,7 @@ const Activities = () => {
 
   const addActivity = () => {
     setActivities((prevActivities) => [...prevActivities, activityInput]);
+    setMainInfo((prevActivities) => [...prevActivities, activityInput]);
   };
 
   const handleChange = (event) => {
@@ -35,10 +40,11 @@ const Activities = () => {
         </div>
       )}
       <ul>
-        {activities.map((activity, index) => (
+        {mainInfo.map((activity, index) => (
           <li key={activity + index}>{activity}</li>
         ))}
       </ul>
+      <p>{mainInfo}</p>
     </div>
   );
 };
